@@ -11,10 +11,7 @@ class DefaultFooter extends Component {
   render() {
 
     // eslint-disable-next-line
-    const {
-      children,
-      ...attributes
-    } = this.props;
+    const {children} = this.props;
 
     return (
       <React.Fragment>

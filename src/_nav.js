@@ -7,7 +7,7 @@ export default {
     }, {
       name: 'Bookings',
       url: '/bookings',
-      icon: 'icon-speedometer'
+      icon: 'icon-calendar'
     }
   ]
 };

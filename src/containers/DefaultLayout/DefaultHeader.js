@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem} from 'reactstrap';
 import PropTypes from 'prop-types';
 
-import {AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler} from '@coreui/react';
+import {AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler} from '@coreui/react';
 import logo from '../../assets/img/brand/logo.svg'
 import sygnet from '../../assets/img/brand/sygnet.svg'
 
@@ -17,10 +17,7 @@ class DefaultHeader extends Component {
   render() {
 
     // eslint-disable-next-line
-    const {
-      children,
-      ...attributes
-    } = this.props;
+    const {children} = this.props;
 
     return (
       <React.Fragment>
