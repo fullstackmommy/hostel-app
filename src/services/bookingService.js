@@ -7,7 +7,10 @@ let bookings = [
         checkOutDate: "13 Jan 2019",
         numPax: 25,
         numRoom: 7,
-        bookingStatus: "Closed"
+        bookingStatus: {
+            _id: "CL",
+            name: "Closed"
+        }
     }, {
         _id: "5c342ac9fc13ae39f8000001",
         name: "CFC-YFC Leader Retreat",
@@ -16,7 +19,10 @@ let bookings = [
         checkOutDate: "25 Nov 2018",
         numPax: 12,
         numRoom: 4,
-        bookingStatus: "Closed"
+        bookingStatus: {
+            _id: "CL",
+            name: "Closed"
+        }
     }, {
         _id: "5c342ac9fc13ae39f8000002",
         name: "MCG Retreat",
@@ -25,7 +31,10 @@ let bookings = [
         checkOutDate: "9 Dec 2018",
         numPax: 60,
         numRoom: 15,
-        bookingStatus: "Closed"
+        bookingStatus: {
+            _id: "CL",
+            name: "Closed"
+        }
     }, {
         _id: "5c342ac9fc13ae39f8000003",
         name: "NY Camp",
@@ -34,7 +43,10 @@ let bookings = [
         checkOutDate: "6 Jan 2019",
         numPax: 20,
         numRoom: 5,
-        bookingStatus: "Closed"
+        bookingStatus: {
+            _id: "CL",
+            name: "Closed"
+        }
     }, {
         _id: "5c342ac9fc13ae39f8000004",
         name: "JY Working Ministry Retreat",
@@ -43,7 +55,10 @@ let bookings = [
         checkOutDate: "10 Feb 2019",
         numPax: 59,
         numRoom: 15,
-        bookingStatus: "Closed"
+        bookingStatus: {
+            _id: "CL",
+            name: "Closed"
+        }
     }, {
         _id: "5c342ac9fc13ae39f8000005",
         name: "SMC Youth Ministry",
@@ -52,7 +67,10 @@ let bookings = [
         checkOutDate: "17 Mar 2019",
         numPax: 47,
         numRoom: 12,
-        bookingStatus: "Confirmed"
+        bookingStatus: {
+            _id: "CO",
+            name: "Confirmed"
+        }
     }, {
         _id: "5c342ac9fc13ae39f8000006",
         name: "ICy NUS",
@@ -61,7 +79,10 @@ let bookings = [
         checkOutDate: "7 Apr 2019",
         numPax: 8,
         numRoom: 8,
-        bookingStatus: "Pending"
+        bookingStatus: {
+            _id: "PE",
+            name: "Pending"
+        }
     }, {
         _id: "5c342ac9fc13ae39f8000007",
         name: "HC Pre-Confirmation Camp",
@@ -70,9 +91,16 @@ let bookings = [
         checkOutDate: "3 Mar 2019",
         numPax: 68,
         numRoom: 17,
-        bookingStatus: "Cancelled"
+        bookingStatus: {
+            _id: "CA",
+            name: "Cancelled"
+        }
     }
 ];
+
+export function getBooking(id) {
+    return bookings.find(booking => booking._id === id);
+}
 
 export function getBookings() {
     return bookings;

@@ -4,11 +4,15 @@ import SelectInput from '../common/SelectInput/SelectInput'
 import {getBookings, saveBooking} from '../../services/bookingService'
 import {getBookingStats} from '../../services/bookingStatsService'
 import Joi from 'joi-browser'
+import moment from 'moment';
+// import {SingleDatePicker} from 'react-dates'; import
+// 'react-dates/lib/css/_datepicker.css'; import 'react-dates/initialize';
 
 export class BookingForm extends Component {
 
     state = {
         bookingStats: getBookingStats(),
+        date: moment(),
         data: {
             name: "",
             contactName: "",

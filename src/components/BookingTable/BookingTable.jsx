@@ -25,7 +25,7 @@ function BookingTable({bookings, handleDelete}) {
                         <td>{booking.checkOutDate}</td>
                         <td>{booking.numPax}</td>
                         <td>{booking.numRoom}</td>
-                        <td>{booking.bookingStatus}</td>
+                        <td>{booking.bookingStatus.name}</td>
                         <td>
                             <Link className="btn btn-primary btn-sm" to={`/bookings/${booking._id}`}>View</Link>
                         </td>

@@ -8,6 +8,10 @@ export default {
       name: 'Bookings',
       url: '/bookings',
       icon: 'icon-calendar'
+    }, {
+      name: 'Rooms',
+      url: '/rooms',
+      icon: 'icon-briefcase'
     }
   ]
 };

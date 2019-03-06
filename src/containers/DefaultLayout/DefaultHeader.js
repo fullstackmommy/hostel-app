@@ -21,7 +21,7 @@ class DefaultHeader extends Component {
       <React.Fragment>
         <AppSidebarToggler className="d-lg-none" display="md" mobile/>
         <AppNavbarBrand>
-          <span role="img" aria-label="hostel">🏪</span>Hostel
+          <span role="img" aria-label="hostel">🏪</span>Book-A-Hostel
         </AppNavbarBrand>
         <AppSidebarToggler className="d-md-down-none" display="lg"/>
 

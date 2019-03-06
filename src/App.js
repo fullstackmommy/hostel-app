@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 // import { renderRoutes } from 'react-router-config';
 import Loadable from 'react-loadable';
 import './App.scss';
@@ -44,6 +44,7 @@ class App extends Component {
           <Route exact path="/404" name="Page 404" component={Page404}/>
           <Route exact path="/500" name="Page 500" component={Page500}/>
           <Route path="/" name="Home" component={DefaultLayout}/>
+          <Redirect to="/login"/>
         </Switch>
       </BrowserRouter>
     );
