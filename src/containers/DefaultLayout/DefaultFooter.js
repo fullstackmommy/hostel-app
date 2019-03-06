@@ -17,7 +17,8 @@ class DefaultFooter extends Component {
       <React.Fragment>
         <span>Hostel App</span>
         <span className="ml-auto">Powered by
-          <a href="https://coreui.io/react">CoreUI for React</a>
+          <a href="https://coreui.io/react">
+            &nbsp;CoreUI for React</a>
         </span>
       </React.Fragment>
     );

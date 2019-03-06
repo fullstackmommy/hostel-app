@@ -83,3 +83,27 @@ export function deleteBooking(id) {
     bookings = bookings.filter(booking => booking._id !== id);
     return found;
 }
+
+export function saveBooking(booking) {
+    let existing = bookings.find(res => res._id === booking._id);
+    if (existing) {
+        //create new object existing and incoming values merged
+        const merged = {
+            ...existing,
+            ...booking
+        };
+        //delete existing
+        bookings = bookings.filter(booking => booking._id !== existing._id);
+        bookings.push(merged);
+        return merged;
+    } else {
+        const newBooking = {
+            _id: Date
+                .now()
+                .toString(),
+            ...booking
+        };
+        bookings.push(newBooking);
+        return newBooking;
+    }
+}

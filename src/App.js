@@ -4,8 +4,6 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Loadable from 'react-loadable';
 import './App.scss';
 
-//import Bookings from './components/Bookings/Bookings'
-
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
 // Containers

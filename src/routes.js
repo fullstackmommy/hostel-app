@@ -5,6 +5,7 @@ const Dashboard = React.lazy(() => import ('./views/Dashboard'));
 const Users = React.lazy(() => import ('./views/Users/Users'));
 const User = React.lazy(() => import ('./views/Users/User'));
 const Bookings = React.lazy(() => import ('./components/Bookings/Bookings'));
+const BookingForm = React.lazy(() => import ('./components/BookingForm/BookingForm'));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-rout
 // er-config
@@ -33,6 +34,16 @@ const routes = [
     exact: true,
     name: 'Booking List',
     component: Bookings
+  }, {
+    path: '/bookings/new',
+    exact: true,
+    name: 'Create New Booking',
+    component: BookingForm
+  }, {
+    path: '/bookings/:id/edit',
+    exact: true,
+    name: 'Edit Booking',
+    component: BookingForm
   }
 ];
 
