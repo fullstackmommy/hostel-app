@@ -11,7 +11,10 @@ export class BookingView extends Component {
             checkOutDate: "",
             numPax: "",
             numRoom: "",
-            bookingStatusId: ""
+            bookingStatusId: "",
+            contactNum: "",
+            bookedOn: "",
+            priceID: ""
         }
     }
     componentDidMount() {
@@ -37,7 +40,10 @@ export class BookingView extends Component {
             checkOutDate,
             numPax,
             numRoom,
-            bookingStatusId
+            bookingStatusId,
+            contactNum,
+            bookedOn,
+            priceId
         } = this.state.data
         return (
             <div className="container">
@@ -57,6 +63,14 @@ export class BookingView extends Component {
                             </th>
                             <td>
                                 {contactName}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                Contact Number
+                            </th>
+                            <td>
+                                {contactNum}
                             </td>
                         </tr>
                         <tr>
@@ -98,6 +112,22 @@ export class BookingView extends Component {
                             </th>
                             <td>
                                 {bookingStatusId}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                Booked On
+                            </th>
+                            <td>
+                                {bookedOn}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                Price Rate
+                            </th>
+                            <td>
+                                {priceId}
                             </td>
                         </tr>
                     </tbody>

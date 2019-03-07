@@ -170,6 +170,14 @@ export class BookingForm extends Component {
         this.setState({momentStartDate: event.startDate, momentEndDate: event.endDate})
     }
 
+    handleCancel = (event) => {
+        event.preventDefault()
+        this
+            .props
+            .history
+            .replace('/bookings');
+    }
+
     render() {
 
         const {bookingStats, error} = this.state
@@ -225,7 +233,10 @@ export class BookingForm extends Component {
                         value={bookingStatusId}
                         error={error.bookingStatusId}/>
                     <span>
-
+                        <button
+                            type="cancel"
+                            className="btn btn-secondary btn-sm mr-2"
+                            onClick={this.handleCancel}>Cancel</button>
                         <button
                             type="submit"
                             className="btn btn-primary btn-sm"

@@ -1,7 +1,7 @@
 let bookings = [
     {
         _id: "5c342ac9fc13ae39f8000000",
-        name: "DJC Youth Retreat",
+        name: "DJC Camp",
         contactName: "Catherine Tan",
         checkInDate: "12 Jan 2019",
         checkOutDate: "13 Jan 2019",
@@ -10,10 +10,13 @@ let bookings = [
         bookingStatus: {
             _id: "CL",
             name: "Closed"
-        }
+        },
+        bookedOn: "31 Dec 2018",
+        contactNum: "91234567",
+        priceId: "2"
     }, {
         _id: "5c342ac9fc13ae39f8000001",
-        name: "CFC-YFC Leader Retreat",
+        name: "CFC-YFC Junior Champ Camp",
         contactName: "Clara Koh",
         checkInDate: "23 Nov 2018",
         checkOutDate: "25 Nov 2018",
@@ -22,10 +25,13 @@ let bookings = [
         bookingStatus: {
             _id: "CL",
             name: "Closed"
-        }
+        },
+        bookedOn: "31 May 2018",
+        contactNum: "92302428",
+        priceId: "1"
     }, {
         _id: "5c342ac9fc13ae39f8000002",
-        name: "MCG Retreat",
+        name: "MCG Camp",
         contactName: "John Varghese",
         checkInDate: "7 Dec 2018",
         checkOutDate: "9 Dec 2018",
@@ -34,7 +40,10 @@ let bookings = [
         bookingStatus: {
             _id: "CL",
             name: "Closed"
-        }
+        },
+        bookedOn: "31 Jul 2018",
+        contactNum: "91764567",
+        priceId: "2"
     }, {
         _id: "5c342ac9fc13ae39f8000003",
         name: "NY Camp",
@@ -46,10 +55,13 @@ let bookings = [
         bookingStatus: {
             _id: "CL",
             name: "Closed"
-        }
+        },
+        bookedOn: "30 Oct 2018",
+        contactNum: "91239297",
+        priceId: "1"
     }, {
         _id: "5c342ac9fc13ae39f8000004",
-        name: "JY Working Ministry Retreat",
+        name: "JY Away Day",
         contactName: "Jessin Francis",
         checkInDate: "9 Feb 2019",
         checkOutDate: "10 Feb 2019",
@@ -58,10 +70,13 @@ let bookings = [
         bookingStatus: {
             _id: "CL",
             name: "Closed"
-        }
+        },
+        bookedOn: "2 Dec 2018",
+        contactNum: "91294567",
+        priceId: "2"
     }, {
         _id: "5c342ac9fc13ae39f8000005",
-        name: "SMC Youth Ministry",
+        name: "SMC Youth Leadership Camp",
         contactName: "Owen Lim",
         checkInDate: "15 Mar 2019",
         checkOutDate: "17 Mar 2019",
@@ -70,10 +85,13 @@ let bookings = [
         bookingStatus: {
             _id: "CO",
             name: "Confirmed"
-        }
+        },
+        bookedOn: "20 Dec 2018",
+        contactNum: "91290567",
+        priceId: "1"
     }, {
         _id: "5c342ac9fc13ae39f8000006",
-        name: "ICy NUS",
+        name: "ICy NBS",
         contactName: "Genevieve Husada",
         checkInDate: "5 Apr 2019",
         checkOutDate: "7 Apr 2019",
@@ -82,10 +100,13 @@ let bookings = [
         bookingStatus: {
             _id: "PE",
             name: "Pending"
-        }
+        },
+        bookedOn: "10 Sep 2018",
+        contactNum: "94564567",
+        priceId: "1"
     }, {
         _id: "5c342ac9fc13ae39f8000007",
-        name: "HC Pre-Confirmation Camp",
+        name: "HC PC Camp",
         contactName: "Tiffany Ling",
         checkInDate: "2 Mar 2019",
         checkOutDate: "3 Mar 2019",
@@ -94,7 +115,10 @@ let bookings = [
         bookingStatus: {
             _id: "CA",
             name: "Cancelled"
-        }
+        },
+        bookedOn: "1 Aug 2018",
+        contactNum: "91239197",
+        priceId: "2"
     }
 ];
 
@@ -115,12 +139,10 @@ export function deleteBooking(id) {
 export function saveBooking(booking) {
     let existing = bookings.find(res => res._id === booking._id);
     if (existing) {
-        //create new object existing and incoming values merged
         const merged = {
             ...existing,
             ...booking
         };
-        //delete existing
         bookings = bookings.filter(booking => booking._id !== existing._id);
         bookings.push(merged);
         return merged;
