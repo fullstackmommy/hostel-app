@@ -102,7 +102,7 @@ export class BookingView extends Component {
                         </tr>
                     </tbody>
                 </table>
-                <Link to="/booking">Back to Booking List</Link>
+                <Link to="/bookings">Back to Booking List</Link>
             </div>
 
         )

@@ -5,14 +5,17 @@ import {getBookings, saveBooking} from '../../services/bookingService'
 import {getBookingStats} from '../../services/bookingStatsService'
 import Joi from 'joi-browser'
 import moment from 'moment';
-// import {SingleDatePicker} from 'react-dates'; import
-// 'react-dates/lib/css/_datepicker.css'; import 'react-dates/initialize';
+import {DateRangePicker} from 'react-dates';
+import 'react-dates/lib/css/_datepicker.css';
+import 'react-dates/initialize';
 
 export class BookingForm extends Component {
 
     state = {
         bookingStats: getBookingStats(),
         date: moment(),
+        momentStartDate: moment(),
+        momentEndDate: moment(),
         data: {
             name: "",
             contactName: "",
@@ -94,6 +97,11 @@ export class BookingForm extends Component {
         delete newBooking.bookingStatus
 
         this.setState({data: newBooking});
+
+        this.setState({
+            momentStartDate: moment(newBooking.checkInDate, 'D MMM YYYY'),
+            momentEndDate: moment(newBooking.checkOutDate, 'D MMM YYYY')
+        })
     }
 
     handleSubmit = event => {
@@ -117,10 +125,11 @@ export class BookingForm extends Component {
         booking.numRoom = parseInt(numRoom)
 
         saveBooking(booking)
+
         this
             .props
             .history
-            .replace(this.props.returnPath);
+            .replace('/bookings');
     }
 
     handleChange = ({currentTarget: input}) => {
@@ -145,24 +154,33 @@ export class BookingForm extends Component {
         this.setState({data});
     };
 
+    handleChangeDate = (event) => {
+        const data = {
+            ...this.state.data
+        }
+
+        data.checkInDate = event
+            .startDate
+            .format('D MMM YYYY')
+        data.checkOutDate = event
+            .endDate
+            .format('D MMM YYYY')
+
+        this.setState({data});
+        this.setState({momentStartDate: event.startDate, momentEndDate: event.endDate})
+    }
+
     render() {
+
         const {bookingStats, error} = this.state
-        const {
-            name,
-            contactName,
-            checkInDate,
-            checkOutDate,
-            numPax,
-            numRoom,
-            bookingStatusId
-        } = this.state.data
+        const {name, contactName, numPax, numRoom, bookingStatusId} = this.state.data
 
         return (
             <div data-testid="create-page">
                 <h3>{this.props.match.params.id
                         ? "Edit Booking"
                         : "Create New Booking"}</h3>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <Input
                         name="name"
                         label="Name"
@@ -175,18 +193,16 @@ export class BookingForm extends Component {
                         onChange={this.handleChange}
                         value={contactName}
                         error={error.contactName}/>
-                    <Input
-                        name="checkInDate"
-                        label="Check In Date"
-                        onChange={this.handleChange}
-                        value={checkInDate}
-                        error={error.checkInDate}/>
-                    <Input
-                        name="checkOutDate"
-                        label="Check Out Date"
-                        onChange={this.handleChange}
-                        value={checkOutDate}
-                        error={error.checkOutDate}/>
+                    <label htmlFor="checkInDate">Check In Date - Check Out Date</label>
+                    <DateRangePicker
+                        displayFormat="DD MM YYYY"
+                        startDate={this.state.momentStartDate}
+                        startDateId="checkInDate"
+                        endDate={this.state.momentEndDate}
+                        endDateId="checkOutDate"
+                        onDatesChange={this.handleChangeDate}
+                        focusedInput={this.state.focusedInput}
+                        onFocusChange={focusedInput => this.setState({focusedInput})}/>
                     <Input
                         name="numPax"
                         label="Num of Pax"
@@ -208,7 +224,14 @@ export class BookingForm extends Component {
                         onChange={this.handleChange}
                         value={bookingStatusId}
                         error={error.bookingStatusId}/>
-                    <button className="btn btn-primary btn-sm" disabled={this.validate()}>Save</button>
+                    <span>
+
+                        <button
+                            type="submit"
+                            className="btn btn-primary btn-sm"
+                            disabled={this.validate()}>Save</button>
+                    </span>
+
                 </form>
             </div>
         )
