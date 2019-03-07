@@ -16,12 +16,11 @@ const errorMessage = /is not allowed to be empty/i;
 describe("BookingForm", () => {
     test("displays all form fields on load", () => {
 
-        const {getByLabelText} = render(<BookingForm match ={match} returnPath={returnPath}/>);
+        const {getByLabelText, getByText} = render(<BookingForm match ={match} returnPath={returnPath}/>);
 
         expect(getByLabelText("Name")).toHaveAttribute("type", "text");
         expect(getByLabelText("Contact Name")).toHaveAttribute("type", "text");
-        expect(getByLabelText("Check In Date")).toHaveAttribute("type", "text");
-        expect(getByLabelText("Check Out Date")).toHaveAttribute("type", "text");
+        expect(getByText("Check In Date - Check Out Date")).toBeInTheDocument();
         expect(getByLabelText("Num of Pax")).toHaveAttribute("type", "number");
         expect(getByLabelText("Num of Rooms")).toHaveAttribute("type", "number");
         expect(getByLabelText("Booking Status")).toBeInTheDocument();
