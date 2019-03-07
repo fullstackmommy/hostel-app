@@ -32,6 +32,11 @@ https://vigorous-shannon-1c88b4.netlify.com
 - [create-react-app](https://www.npmjs.com/package/create-react-app)
 - [material-ui](https://material-ui.com) (Info Window typography)
 
+Library used:
+react-testing-library
+joi-browser
+moment
+react-dates
 
 ### Prerequisites
 
