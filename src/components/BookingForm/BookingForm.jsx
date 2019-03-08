@@ -21,7 +21,6 @@ export class BookingForm extends Component {
             checkInDate: "",
             checkOutDate: "",
             numPax: "",
-            numRoom: "",
             bookingStatusId: ""
         },
         error: {
@@ -30,7 +29,6 @@ export class BookingForm extends Component {
             checkInDate: "",
             checkOutDate: "",
             numPax: "",
-            numRoom: "",
             bookingStatusId: ""
         }
     }
@@ -50,10 +48,6 @@ export class BookingForm extends Component {
             .string()
             .required(),
         numPax: Joi
-            .number()
-            .integer()
-            .min(1),
-        numRoom: Joi
             .number()
             .integer()
             .min(1),
@@ -106,7 +100,7 @@ export class BookingForm extends Component {
         if (isInvalidForm) 
             return;
         
-        const {bookingStatusId, numPax, numRoom} = this.state.data
+        const {bookingStatusId, numPax} = this.state.data
         const bookingStatus = getBookingStats().find(bookingStat => bookingStat._id === bookingStatusId)
 
         let booking = {
@@ -116,7 +110,6 @@ export class BookingForm extends Component {
         booking.bookingStatus = bookingStatus;
 
         booking.numPax = parseInt(numPax)
-        booking.numRoom = parseInt(numRoom)
 
         saveBooking(booking)
 
@@ -193,7 +186,6 @@ export class BookingForm extends Component {
             name,
             contactName,
             numPax,
-            numRoom,
             bookingStatusId,
             checkInDate,
             checkOutDate
@@ -249,13 +241,10 @@ export class BookingForm extends Component {
                                 onChange={this.handleChange}
                                 value={numPax}
                                 error={error.numPax}/>
-                            <Input
-                                name="numRoom"
-                                label="Num of Rooms"
-                                type="number"
-                                onChange={this.handleChange}
-                                value={numRoom}
-                                error={error.numRoom}/>
+                            <RoomBooking
+                                rooms={this.state.rooms}
+                                dateSelectStart={this.state.startDate}
+                                dateSelectEnd={this.state.endDate}/>
                             <SelectInput
                                 name="bookingStatusId"
                                 label="Booking Status"
@@ -273,15 +262,8 @@ export class BookingForm extends Component {
                                     className="btn btn-primary btn-sm"
                                     disabled={this.validate()}>Save</button>
                             </span>
-
                         </form>
                     </CardBody>
-                </Card>
-                <Card>
-                    <RoomBooking
-                        rooms={this.state.rooms}
-                        dateSelectStart={this.state.startDate}
-                        dateSelectEnd={this.state.endDate}/>
                 </Card>
             </div>
 
