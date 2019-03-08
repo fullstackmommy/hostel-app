@@ -51,13 +51,7 @@ const routes = [
     exact: true,
     name: 'View Booking',
     component: BookingView
-  }, {
-    path: '/rooms',
-    exact: true,
-    name: 'View Booking',
-    component: RoomBooking
   }
-
 ];
 
 export default routes;

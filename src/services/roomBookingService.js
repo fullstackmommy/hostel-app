@@ -290,13 +290,17 @@ export function getRoomBookingByDate(selectDate) {
 
 export function getRoomStatusByDate(roomId, selectDateStart, selectDateEnd) {
 
+    // no dates seleted, should not be handled here
+    if (!selectDateStart || !selectDateEnd) 
+        return "Available"
+
     if (!roomBookings.find(roomBooking => roomBooking.roomId === roomId)) {
         return "Available"
     }
 
     let foundRoomBookings = roomBookings.filter(roomBooking => roomBooking.roomId === roomId)
 
-    if (foundRoomBookings.find(foundRoomBooking => (selectDateEnd < foundRoomBooking.startDate || selectDateStart > foundRoomBooking.endDate))) {
+    if (foundRoomBookings.find(foundRoomBooking => (selectDateEnd >= foundRoomBooking.startDate && selectDateStart <= foundRoomBooking.endDate))) {
         return "Reserved"
     } else {
         return "Available"

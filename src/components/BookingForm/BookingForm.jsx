@@ -12,7 +12,8 @@ export class BookingForm extends Component {
 
     state = {
         rooms: getRooms(),
-        focusedInput: null,
+        startDate: "",
+        endDate: "",
         bookingStats: getBookingStats(),
         data: {
             name: "",
@@ -170,7 +171,11 @@ export class BookingForm extends Component {
         const valueDateISO = valueDateObj.toISOString()
 
         data[input.name] = valueDateISO;
-        this.setState({data});
+        if (input.name === "checkInDate") {
+            this.setState({data, startDate: valueDateISO})
+        } else {
+            this.setState({data, endDate: valueDateISO})
+        }
     };
 
     handleCancel = (event) => {
@@ -270,8 +275,8 @@ export class BookingForm extends Component {
                 <Card>
                     <RoomBooking
                         rooms={this.state.rooms}
-                        dateSelectStart={checkInDate}
-                        dateSelectEnd={checkOutDate}/>
+                        dateSelectStart={this.state.startDate}
+                        dateSelectEnd={this.state.endDate}/>
                 </Card>
             </div>
 
