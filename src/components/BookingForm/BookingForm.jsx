@@ -95,7 +95,7 @@ export class BookingForm extends Component {
         newBooking.bookingStatusId = newBooking.bookingStatus._id
         delete newBooking.bookingStatus
 
-        this.setState({data: newBooking})
+        this.setState({data: newBooking, startDate: newBooking.checkInDate, endDate: newBooking.checkOutDate})
     }
 
     handleSubmit = event => {
@@ -221,22 +221,27 @@ export class BookingForm extends Component {
                                 onChange={this.handleChange}
                                 value={contactName}
                                 error={error.contactName}/>
-                            <label htmlFor="checkInDate-input">Check In Date</label>
-                            <input
-                                type="date"
-                                label="Check In Date"
-                                id="checkInDate-input"
-                                name="checkInDate"
-                                onChange={this.handleChangeDate}
-                                value={checkInDate.substring(0, 10)}/>
-                            <label htmlFor="checkOutDate-input">Check Out Date</label>
-                            <input
-                                type="date"
-                                label="Check Out Date"
-                                id="checkOutDate-input"
-                                name="checkOutDate"
-                                onChange={this.handleChangeDate}
-                                value={checkOutDate.substring(0, 10)}/>
+                            <span
+                                style={{
+                                display: 'inline-block'
+                            }}>
+                                <label htmlFor="checkInDate-input">Check In Date</label>
+                                <input
+                                    type="date"
+                                    label="Check In Date"
+                                    id="checkInDate-input"
+                                    name="checkInDate"
+                                    onChange={this.handleChangeDate}
+                                    value={checkInDate.substring(0, 10)}/>
+                                <label htmlFor="checkOutDate-input">Check Out Date</label>
+                                <input
+                                    type="date"
+                                    label="Check Out Date"
+                                    id="checkOutDate-input"
+                                    name="checkOutDate"
+                                    onChange={this.handleChangeDate}
+                                    value={checkOutDate.substring(0, 10)}/>
+                            </span>
                             <Input
                                 name="numPax"
                                 label="Num of Pax"
