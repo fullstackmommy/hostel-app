@@ -7,7 +7,6 @@ const User = React.lazy(() => import ('./views/Users/User'));
 const Bookings = React.lazy(() => import ('./components/Bookings/Bookings'));
 const BookingForm = React.lazy(() => import ('./components/BookingForm/BookingForm'));
 const BookingView = React.lazy(() => import ('./components/BookingView/BookingView'));
-const RoomBooking = React.lazy(() => import ('./components/RoomBooking/RoomBooking'));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-rout
 // er-config

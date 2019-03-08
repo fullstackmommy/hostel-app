@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import Input from '../common/Input/Input'
+import DateInput from '../common/DateInput/DateInput'
 import SelectInput from '../common/SelectInput/SelectInput'
 import {getBookings, saveBooking} from '../../services/bookingService'
 import {getBookingStats} from '../../services/bookingStatsService'
 import Joi from 'joi-browser'
 import {Card, CardBody, CardHeader} from 'reactstrap'
-import RoomBooking from '../RoomBooking/RoomBooking'
+import RoomBookingList from '../RoomBookingList/RoomBookingList'
 import {getRooms} from '../../services/roomService'
 
 export class BookingForm extends Component {
@@ -64,7 +65,6 @@ export class BookingForm extends Component {
         const result = Joi.validate({
             [inputName]: value
         }, schema)
-
         return result.error;
     }
 
@@ -179,6 +179,10 @@ export class BookingForm extends Component {
             .replace('/bookings');
     }
 
+    handleClickRoom = () => {
+        console.log("click")
+    }
+
     render() {
 
         const {bookingStats, error} = this.state
@@ -192,80 +196,75 @@ export class BookingForm extends Component {
         } = this.state.data
 
         return (
-            <div>
-                <Card>
-                    <CardHeader>
-                        {this.props.match.params.id
-                            ? "Edit Booking"
-                            : "Create New Booking"}
-                    </CardHeader>
-                    <CardBody>
-                        <form onSubmit={this.handleSubmit}>
-                            <Input
-                                name="name"
-                                label="Name"
-                                onChange={this.handleChange}
-                                value={name}
-                                error={error.name}/>
-                            <Input
-                                name="contactName"
-                                label="Contact Name"
-                                onChange={this.handleChange}
-                                value={contactName}
-                                error={error.contactName}/>
-                            <span
-                                style={{
-                                display: 'inline-block'
-                            }}>
-                                <label htmlFor="checkInDate-input">Check In Date</label>
-                                <input
-                                    type="date"
-                                    label="Check In Date"
-                                    id="checkInDate-input"
-                                    name="checkInDate"
-                                    onChange={this.handleChangeDate}
-                                    value={checkInDate.substring(0, 10)}/>
-                                <label htmlFor="checkOutDate-input">Check Out Date</label>
-                                <input
-                                    type="date"
-                                    label="Check Out Date"
-                                    id="checkOutDate-input"
-                                    name="checkOutDate"
-                                    onChange={this.handleChangeDate}
-                                    value={checkOutDate.substring(0, 10)}/>
-                            </span>
-                            <Input
-                                name="numPax"
-                                label="Num of Pax"
-                                type="number"
-                                onChange={this.handleChange}
-                                value={numPax}
-                                error={error.numPax}/>
-                            <RoomBooking
-                                rooms={this.state.rooms}
-                                dateSelectStart={this.state.startDate}
-                                dateSelectEnd={this.state.endDate}/>
-                            <SelectInput
-                                name="bookingStatusId"
-                                label="Booking Status"
-                                options={bookingStats}
-                                onChange={this.handleChange}
-                                value={bookingStatusId}
-                                error={error.bookingStatusId}/>
-                            <span>
-                                <button
-                                    type="cancel"
-                                    className="btn btn-secondary btn-sm mr-2"
-                                    onClick={this.handleCancel}>Cancel</button>
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary btn-sm"
-                                    disabled={this.validate()}>Save</button>
-                            </span>
-                        </form>
-                    </CardBody>
-                </Card>
-            </div>
+            <Card>
+                <CardHeader>
+                    {this.props.match.params.id
+                        ? "Edit Booking"
+                        : "Create New Booking"}
+                </CardHeader>
+                <CardBody>
+                    <form onSubmit={this.handleSubmit}>
+                        <Input
+                            name="name"
+                            label="Name"
+                            onChange={this.handleChange}
+                            value={name}
+                            error={error.name}/>
+                        <Input
+                            name="contactName"
+                            label="Contact Name"
+                            onChange={this.handleChange}
+                            value={contactName}
+                            error={error.contactName}/>
+                        <span
+                            style={{
+                            display: 'inline-block'
+                        }}>
+                            <DateInput
+                                name="checkInDate"
+                                label="Check In Date"
+                                onChange={this.handleChangeDate}
+                                value={checkInDate.substring(0, 10)}
+                                error={error.checkInDate}/>
+                            <DateInput
+                                name="checkOutDate"
+                                label="Check Out Date"
+                                onChange={this.handleChangeDate}
+                                value={checkOutDate.substring(0, 10)}
+                                error={error.checkOutDate}/>
+                        </span>
+                        <Input
+                            name="numPax"
+                            label="Num of Pax"
+                            type="number"
+                            onChange={this.handleChange}
+                            value={numPax}
+                            error={error.numPax}/>
+                        <RoomBookingList
+                            rooms={this.state.rooms}
+                            dateSelectStart={this.state.startDate}
+                            dateSelectEnd={this.state.endDate}
+                            handleClickRoom={this.state.handleClickRoom}/>
+                        <SelectInput
+                            name="bookingStatusId"
+                            label="Booking Status"
+                            options={bookingStats}
+                            onChange={this.handleChange}
+                            value={bookingStatusId}
+                            error={error.bookingStatusId}/>
+                        <span>
+                            <button
+                                type="cancel"
+                                className="btn btn-secondary btn-sm mr-2"
+                                onClick={this.handleCancel}>Cancel</button>
+                            <button
+                                type="submit"
+                                className="btn btn-primary btn-sm"
+                                disabled={this.validate()}>Save</button>
+                        </span>
+                    </form>
+                </CardBody>
+            </Card>
 
         )
     }
