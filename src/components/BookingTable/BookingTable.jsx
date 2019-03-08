@@ -21,8 +21,12 @@ function BookingTable({bookings, handleDelete}) {
                     <tr key={booking._id} data-testid="booking-table-row">
                         <td>{booking.name}</td>
                         <td>{booking.contactName}</td>
-                        <td>{booking.checkInDate}</td>
-                        <td>{booking.checkOutDate}</td>
+                        <td>{booking
+                                .checkInDate
+                                .substring(0, 10)}</td>
+                        <td>{booking
+                                .checkOutDate
+                                .substring(0, 10)}</td>
                         <td>{booking.numPax}</td>
                         <td>{booking.numRoom}</td>
                         <td>{booking.bookingStatus.name}</td>
