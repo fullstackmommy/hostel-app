@@ -1,4 +1,4 @@
-const roomBookings = [
+let roomBookings = [
     {
         _id: "6d342ac9fc13ae39f8000000",
         bookingId: "5c342ac9fc13ae39f8000000",
@@ -290,7 +290,7 @@ export function getRoomBookingByDate(selectDate) {
 
 export function getRoomStatusByDate(roomId, selectDateStart, selectDateEnd) {
 
-    // no dates seleted, should not be handled here
+    // no dates seleted, consider handling this elsewhere
     if (!selectDateStart || !selectDateEnd) 
         return "Available"
 
@@ -306,4 +306,18 @@ export function getRoomStatusByDate(roomId, selectDateStart, selectDateEnd) {
         return "Available"
     }
 
+}
+
+export function saveRoomBooking(booking, roomId) {
+    const roomBooking = {
+        _id: Date
+            .now()
+            .toString(),
+        bookingId: booking._id,
+        roomId: roomId,
+        startDate: booking.checkInDate,
+        endDate: booking.checkOutDate
+    };
+    roomBookings.push(roomBooking);
+    return roomBooking;
 }

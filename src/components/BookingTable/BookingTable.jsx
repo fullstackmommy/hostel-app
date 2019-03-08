@@ -11,7 +11,6 @@ function BookingTable({bookings, handleDelete}) {
                     <th>Check In Date</th>
                     <th>Check Out Date</th>
                     <th>Number of Pax</th>
-                    <th>Number of Rooms</th>
                     <th>Booking Status</th>
                     <th></th>
                 </tr>
@@ -28,7 +27,6 @@ function BookingTable({bookings, handleDelete}) {
                                 .checkOutDate
                                 .substring(0, 10)}</td>
                         <td>{booking.numPax}</td>
-                        <td>{booking.numRoom}</td>
                         <td>{booking.bookingStatus.name}</td>
                         <td>
                             <Link className="btn btn-primary btn-sm" to={`/bookings/${booking._id}`}>View</Link>

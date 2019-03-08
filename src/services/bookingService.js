@@ -113,7 +113,7 @@ export function deleteBooking(id) {
 }
 
 export function saveBooking(booking) {
-    let existing = bookings.find(res => res._id === booking._id);
+    let existing = bookings.find(bk => bk._id === booking._id);
     if (existing) {
         const merged = {
             ...existing,
