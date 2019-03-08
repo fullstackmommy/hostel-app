@@ -13,6 +13,7 @@ export class BookingForm extends Component {
 
     state = {
         rooms: getRooms(),
+        bookedRoom: {},
         startDate: "",
         endDate: "",
         bookingStats: getBookingStats(),
@@ -180,7 +181,7 @@ export class BookingForm extends Component {
     }
 
     handleClickRoom = () => {
-        console.log("click")
+        console.log("click ")
     }
 
     render() {

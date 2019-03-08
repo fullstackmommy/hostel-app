@@ -2,6 +2,15 @@ import React from 'react'
 import {Link} from "react-router-dom"
 
 function BookingTable({bookings, handleDelete}) {
+
+    const sortedBookings = bookings.sort((first, second) => {
+        if (first.checkInDate < second.checkInDate) 
+            return -1
+        if (first.checkInDate > second.checkInDate) 
+            return 1
+        return 0
+    })
+
     return (
         <table className="table">
             <thead>
@@ -16,7 +25,7 @@ function BookingTable({bookings, handleDelete}) {
                 </tr>
             </thead>
             <tbody>
-                {bookings.map(booking => (
+                {sortedBookings.map(booking => (
                     <tr key={booking._id} data-testid="booking-table-row">
                         <td>{booking.name}</td>
                         <td>{booking.contactName}</td>
