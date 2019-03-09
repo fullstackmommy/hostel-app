@@ -11,15 +11,15 @@ import 'react-date-range/dist/theme/default.css'
 import {DateRangePicker} from 'react-date-range';
 import RoomBookingList from '../RoomBookingList/RoomBookingList'
 import {getRooms} from '../../services/roomService'
-import {getRoomBookings, getRoomStatusByDate} from '../../services/roomBookingService'
+import {getRoomBookings, getRoomStatusByDate, updateRoomStatus, saveRoomBooking} from '../../services/roomBookingService'
 
 export class BookingForm extends Component {
 
     state = {
         rooms: getRooms(),
-        roomBookings: getRoomBookings(),
         startDate: "",
         endDate: "",
+        roomBookings: getRoomBookings(),
         bookingStats: getBookingStats(),
         roomBooking: {
             status: "",
@@ -115,6 +115,8 @@ export class BookingForm extends Component {
         // TODO: setstate for rooms status
         this.setState({
             data: newBooking,
+            startDate: newBooking.checkInDate,
+            endDate: newBooking.checkOutDate,
             selectionRange: {
                 selection: {
                     startDate: startDateObj,
@@ -199,8 +201,6 @@ export class BookingForm extends Component {
 
         this.setState({
             data,
-            startDate: startDateISO,
-            endDate: endDateISO,
             selectionRange: {
                 ...this.state.selectionRange,
                 ...dateRange
@@ -210,16 +210,13 @@ export class BookingForm extends Component {
 
     handleClickRoom = (roomId) => {
         console.log("click")
-        console.log(roomId, " ", getRoomStatusByDate(roomId))
-        let roomBooking = {
-            ...this.state.roomBooking
-        }
-        if (getRoomStatusByDate(roomId) === "Reserved") {
-            // set roomBookingStatus to Cancelled
-            roomBooking["status"] = "Cancelled"
-            this.setState({roomBooking})
+        console.log(roomId, " ", getRoomStatusByDate(roomId, this.state.startDate, this.state.endDate))
+
+        if (getRoomStatusByDate(roomId, this.state.startDate, this.state.endDate) === "Reserved") {
+            console.log("update")
+            updateRoomStatus(this.state.data, roomId)
         } else {
-            // saveRoomBookingService (roomBooking)
+            saveRoomBooking(this.state.data, roomId, "Reserved")
         }
 
     }

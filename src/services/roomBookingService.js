@@ -248,7 +248,7 @@ let roomBookings = [
         _id: "6d342ac9fc13ae39f8000015",
         status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000005",
-        roomId: "03-06",
+        roomId: "03-10",
         startDate: "2019-03-15T00:00:00.000+08:00",
         endDate: "2019-03-17T12:00:00.000+08:00"
     }, {
@@ -335,32 +335,30 @@ export function getRoomBookings() {
     return roomBookings;
 }
 
-// export function getRoomBookingByDate(selectDate) {     return
-// roomBookings.find(roomBooking => selectDate >= roomBooking.startDate &&
-// selectDate <= roomBooking.endDate) }
+export function getRoomBooking(booking, roomId) {
+    return roomBookings.find(roomBooking => (roomBooking.bookingId === booking._id && roomBooking.roomId === roomId))
+}
 
 export function getRoomStatusByDate(roomId, selectDateStart, selectDateEnd) {
-
-    if (!roomBookings.find(roomBooking => roomBooking.roomId === roomId && roomBooking.status !== "Cancelled")) {
+    if (!roomBookings.find(roomBooking => roomBooking.roomId === roomId) || roomBookings.find(roomBooking => roomBooking.roomId === roomId && roomBooking.status === "Cancelled")) {
         return "Available"
     }
 
-    let foundRoomBookings = roomBookings.filter(roomBooking => roomBooking.roomId === roomId && roomBooking.status !== "Cancelled")
+    let foundRoomBookings = roomBookings.filter(roomBooking => (roomBooking.roomId === roomId && roomBooking.status !== "Cancelled"))
 
     if (foundRoomBookings.find(foundRoomBooking => (selectDateEnd >= foundRoomBooking.startDate && selectDateStart <= foundRoomBooking.endDate))) {
         return "Reserved"
     } else {
         return "Available"
     }
-
 }
 
-export function saveRoomBooking(booking, roomId) {
+export function saveRoomBooking(booking, roomId, status) {
     const roomBooking = {
         _id: Date
             .now()
             .toString(),
-        status: "Confirmed",
+        status: status,
         bookingId: booking._id,
         roomId: roomId,
         startDate: booking.checkInDate,
@@ -368,4 +366,10 @@ export function saveRoomBooking(booking, roomId) {
     };
     roomBookings.push(roomBooking);
     return roomBooking;
+}
+
+export function updateRoomStatus(booking, roomId) {
+    const selectedRoomBooking = getRoomBooking(booking, roomId)
+    selectedRoomBooking["status"] = "Cancelled"
+    return selectedRoomBooking
 }
