@@ -1,282 +1,329 @@
 let roomBookings = [
     {
         _id: "6d342ac9fc13ae39f8000000",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000000",
         roomId: "03-01",
         startDate: "2019-01-12T00:00:00.000+08:00",
         endDate: "2019-01-13T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000001",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000000",
         roomId: "03-02",
         startDate: "2019-01-12T00:00:00.000+08:00",
         endDate: "2019-01-13T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000003",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000000",
         roomId: "03-03",
         startDate: "2019-01-12T00:00:00.000+08:00",
         endDate: "2019-01-13T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000004",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000000",
         roomId: "03-04",
         startDate: "2019-01-12T00:00:00.000+08:00",
         endDate: "2019-01-13T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000005",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000000",
         roomId: "03-05",
         startDate: "2019-01-12T00:00:00.000+08:00",
         endDate: "2019-01-13T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000006",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000000",
         roomId: "03-06",
         startDate: "2019-01-12T00:00:00.000+08:00",
         endDate: "2019-01-13T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000007",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000000",
         roomId: "03-07",
         startDate: "2019-01-12T00:00:00.000+08:00",
         endDate: "2019-01-13T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000008",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000001",
         roomId: "04-06",
         startDate: "2018-11-23T00:00:00.000+08:00",
         endDate: "2018-11-25T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000009",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000001",
         roomId: "04-07",
         startDate: "2018-11-23T00:00:00.000+08:00",
         endDate: "2018-11-25T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000010",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000001",
         roomId: "04-08",
         startDate: "2018-11-23T00:00:00.000+08:00",
         endDate: "2018-11-25T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000010",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000001",
         roomId: "04-09",
         startDate: "2018-11-23T00:00:00.000+08:00",
         endDate: "2018-11-25T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000011",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000002",
         roomId: "03-01",
         startDate: "2018-12-07T00:00:00.000+08:00",
         endDate: "2018-12-09T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000012",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000002",
         roomId: "03-02",
         startDate: "2018-12-07T00:00:00.000+08:00",
         endDate: "2018-12-09T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000013",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000002",
         roomId: "03-03",
         startDate: "2018-12-07T00:00:00.000+08:00",
         endDate: "2018-12-09T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000014",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000002",
         roomId: "03-04",
         startDate: "2018-12-07T00:00:00.000+08:00",
         endDate: "2018-12-09T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000015",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000002",
         roomId: "03-05",
         startDate: "2018-12-07T00:00:00.000+08:00",
         endDate: "2018-12-09T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000016",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000002",
         roomId: "03-06",
         startDate: "2018-12-07T00:00:00.000+08:00",
         endDate: "2018-12-09T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000017",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000002",
         roomId: "03-07",
         startDate: "2018-12-07T00:00:00.000+08:00",
         endDate: "2018-12-09T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000018",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000002",
         roomId: "03-08",
         startDate: "2018-12-07T00:00:00.000+08:00",
         endDate: "2018-12-09T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000019",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000002",
         roomId: "03-09",
         startDate: "2018-12-07T00:00:00.000+08:00",
         endDate: "2018-12-09T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000020",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000002",
         roomId: "03-10",
         startDate: "2018-12-07T00:00:00.000+08:00",
         endDate: "2018-12-09T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000021",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000002",
         roomId: "04-06",
         startDate: "2018-12-07T00:00:00.000+08:00",
         endDate: "2018-12-09T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000022",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000002",
         roomId: "04-07",
         startDate: "2018-12-07T00:00:00.000+08:00",
         endDate: "2018-12-09T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000023",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000002",
         roomId: "04-08",
         startDate: "2018-12-07T00:00:00.000+08:00",
         endDate: "2018-12-09T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000024",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000002",
         roomId: "04-09",
         startDate: "2018-12-07T00:00:00.000+08:00",
         endDate: "2018-12-09T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000025",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000002",
         roomId: "04-10",
         startDate: "2018-12-07T00:00:00.000+08:00",
         endDate: "2018-12-09T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000026",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000005",
         roomId: "03-01",
         startDate: "2019-03-15T00:00:00.000+08:00",
         endDate: "2019-03-17T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000027",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000005",
         roomId: "03-02",
         startDate: "2019-03-15T00:00:00.000+08:00",
         endDate: "2019-03-17T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000028",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000005",
         roomId: "03-03",
         startDate: "2019-03-15T00:00:00.000+08:00",
         endDate: "2019-03-17T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000029",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000005",
         roomId: "03-04",
         startDate: "2019-03-15T00:00:00.000+08:00",
         endDate: "2019-03-17T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000010",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000005",
         roomId: "03-05",
         startDate: "2019-03-15T00:00:00.000+08:00",
         endDate: "2019-03-17T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000011",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000005",
         roomId: "03-06",
         startDate: "2019-03-15T00:00:00.000+08:00",
         endDate: "2019-03-17T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000012",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000005",
         roomId: "03-07",
         startDate: "2019-03-15T00:00:00.000+08:00",
         endDate: "2019-03-17T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000013",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000005",
         roomId: "03-08",
         startDate: "2019-03-15T00:00:00.000+08:00",
         endDate: "2019-03-17T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000014",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000005",
         roomId: "03-09",
         startDate: "2019-03-15T00:00:00.000+08:00",
         endDate: "2019-03-17T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000015",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000005",
         roomId: "03-06",
         startDate: "2019-03-15T00:00:00.000+08:00",
         endDate: "2019-03-17T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000016",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000005",
         roomId: "04-07",
         startDate: "2019-03-15T00:00:00.000+08:00",
         endDate: "2019-03-17T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000017",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000005",
         roomId: "04-08",
         startDate: "2019-03-15T00:00:00.000+08:00",
         endDate: "2019-03-17T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000018",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000006",
         roomId: "03-01",
         startDate: "2019-04-05T00:00:00.000+08:00",
         endDate: "2019-04-07T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000019",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000006",
         roomId: "03-02",
         startDate: "2019-04-05T00:00:00.000+08:00",
         endDate: "2019-04-07T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000020",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000006",
         roomId: "03-03",
         startDate: "2019-04-05T00:00:00.000+08:00",
         endDate: "2019-04-07T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000020",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000006",
         roomId: "03-03",
         startDate: "2019-04-05T00:00:00.000+08:00",
         endDate: "2019-04-07T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000021",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000006",
         roomId: "03-04",
         startDate: "2019-04-05T00:00:00.000+08:00",
         endDate: "2019-04-07T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000022",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000006",
         roomId: "03-05",
         startDate: "2019-04-05T00:00:00.000+08:00",
         endDate: "2019-04-07T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000023",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000006",
         roomId: "03-06",
         startDate: "2019-04-05T00:00:00.000+08:00",
         endDate: "2019-04-07T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000024",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000006",
         roomId: "03-07",
         startDate: "2019-04-05T00:00:00.000+08:00",
         endDate: "2019-04-07T12:00:00.000+08:00"
     }, {
         _id: "6d342ac9fc13ae39f8000025",
+        status: "Confirmed",
         bookingId: "5c342ac9fc13ae39f8000006",
         roomId: "03-08",
         startDate: "2019-04-05T00:00:00.000+08:00",
@@ -284,21 +331,21 @@ let roomBookings = [
     }
 ];
 
-export function getRoomBookingByDate(selectDate) {
-    return roomBookings.find(roomBooking => selectDate >= roomBooking.startDate && selectDate <= roomBooking.endDate)
+export function getRoomBookings() {
+    return roomBookings;
 }
+
+// export function getRoomBookingByDate(selectDate) {     return
+// roomBookings.find(roomBooking => selectDate >= roomBooking.startDate &&
+// selectDate <= roomBooking.endDate) }
 
 export function getRoomStatusByDate(roomId, selectDateStart, selectDateEnd) {
 
-    // no dates seleted, consider handling this elsewhere
-    if (!selectDateStart || !selectDateEnd) 
-        return "Available"
-
-    if (!roomBookings.find(roomBooking => roomBooking.roomId === roomId)) {
+    if (!roomBookings.find(roomBooking => roomBooking.roomId === roomId && roomBooking.status !== "Cancelled")) {
         return "Available"
     }
 
-    let foundRoomBookings = roomBookings.filter(roomBooking => roomBooking.roomId === roomId)
+    let foundRoomBookings = roomBookings.filter(roomBooking => roomBooking.roomId === roomId && roomBooking.status !== "Cancelled")
 
     if (foundRoomBookings.find(foundRoomBooking => (selectDateEnd >= foundRoomBooking.startDate && selectDateStart <= foundRoomBooking.endDate))) {
         return "Reserved"
@@ -313,6 +360,7 @@ export function saveRoomBooking(booking, roomId) {
         _id: Date
             .now()
             .toString(),
+        status: "Confirmed",
         bookingId: booking._id,
         roomId: roomId,
         startDate: booking.checkInDate,

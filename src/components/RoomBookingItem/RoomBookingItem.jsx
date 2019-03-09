@@ -12,7 +12,7 @@ function RoomBookingItem({room, handleClickRoom, dateSelectStart, dateSelectEnd}
     return (
         <button
             type="button"
-            onClick={handleClickRoom}
+            onClick={() => handleClickRoom(room)}
             className={getClass(getRoomStatusByDate(room, dateSelectStart, dateSelectEnd).substr(0, 1))}
             key={room}
             value={getRoomStatusByDate(room, dateSelectStart, dateSelectEnd).substr(0, 1)}>{room}

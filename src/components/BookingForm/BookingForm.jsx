@@ -11,15 +11,23 @@ import 'react-date-range/dist/theme/default.css'
 import {DateRangePicker} from 'react-date-range';
 import RoomBookingList from '../RoomBookingList/RoomBookingList'
 import {getRooms} from '../../services/roomService'
+import {getRoomBookings, getRoomStatusByDate} from '../../services/roomBookingService'
 
 export class BookingForm extends Component {
 
     state = {
         rooms: getRooms(),
-        bookedRoom: {},
+        roomBookings: getRoomBookings(),
         startDate: "",
         endDate: "",
         bookingStats: getBookingStats(),
+        roomBooking: {
+            status: "",
+            bookingId: "",
+            roomId: "",
+            startDate: "",
+            endDate: ""
+        },
         data: {
             name: "",
             contactName: "",
@@ -31,8 +39,6 @@ export class BookingForm extends Component {
         error: {
             name: "",
             contactName: "",
-            checkInDate: "",
-            checkOutDate: "",
             numPax: "",
             bookingStatusId: ""
         },
@@ -53,13 +59,13 @@ export class BookingForm extends Component {
         contactName: Joi
             .string()
             .required(),
-        checkInDate: Joi
-            .string()
-            .required(),
-        checkOutDate: Joi
-            .string()
-            .required(),
+        checkInDate: Joi.string(),
+        checkOutDate: Joi.string(),
         numPax: Joi
+            .number()
+            .integer()
+            .min(1),
+        numRoom: Joi
             .number()
             .integer()
             .min(1),
@@ -76,6 +82,7 @@ export class BookingForm extends Component {
         const result = Joi.validate({
             [inputName]: value
         }, schema)
+
         return result.error;
     }
 
@@ -84,6 +91,7 @@ export class BookingForm extends Component {
             abortEarly: false
         }
         const result = Joi.validate(this.state.data, this.schema, option);
+
         return result.error
     }
 
@@ -97,13 +105,27 @@ export class BookingForm extends Component {
         const newBooking = {
             ...bookingFound
         }
+
         newBooking.bookingStatusId = newBooking.bookingStatus._id
         delete newBooking.bookingStatus
 
-        this.setState({data: newBooking, startDate: newBooking.checkInDate, endDate: newBooking.checkOutDate})
+        const startDateObj = new Date(newBooking.checkInDate)
+        const endDateObj = new Date(newBooking.checkOutDate)
+
+        // TODO: setstate for rooms status
+        this.setState({
+            data: newBooking,
+            selectionRange: {
+                selection: {
+                    startDate: startDateObj,
+                    endDate: endDateObj,
+                    key: 'selection'
+                }
+            }
+        })
     }
 
-    handleSubmit = event => {
+    handleSubmit = (event) => {
         event.preventDefault();
 
         const isInvalidForm = this.validate()
@@ -117,6 +139,7 @@ export class BookingForm extends Component {
         let booking = {
             ...this.state.data
         }
+
         delete booking.bookingStatusId;
         booking.bookingStatus = bookingStatus;
 
@@ -185,8 +208,20 @@ export class BookingForm extends Component {
         })
     }
 
-    handleClickRoom = () => {
-        console.log("click ")
+    handleClickRoom = (roomId) => {
+        console.log("click")
+        console.log(roomId, " ", getRoomStatusByDate(roomId))
+        let roomBooking = {
+            ...this.state.roomBooking
+        }
+        if (getRoomStatusByDate(roomId) === "Reserved") {
+            // set roomBookingStatus to Cancelled
+            roomBooking["status"] = "Cancelled"
+            this.setState({roomBooking})
+        } else {
+            // saveRoomBookingService (roomBooking)
+        }
+
     }
 
     render() {
@@ -232,7 +267,7 @@ export class BookingForm extends Component {
                             rooms={this.state.rooms}
                             dateSelectStart={this.state.startDate}
                             dateSelectEnd={this.state.endDate}
-                            handleClickRoom={this.state.handleClickRoom}/>
+                            handleClickRoom={this.handleClickRoom}/>
                         <SelectInput
                             name="bookingStatusId"
                             label="Booking Status"
