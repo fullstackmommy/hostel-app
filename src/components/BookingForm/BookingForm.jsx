@@ -45,10 +45,11 @@ export class BookingForm extends Component {
         selectionRange: {
             selection: {
                 startDate: new Date(),
-                endDate: addDays(new Date(), 7),
+                endDate: addDays(new Date(), 2),
                 key: 'selection'
             }
-        }
+        },
+        condition: false
     }
 
     schema = {
@@ -112,7 +113,6 @@ export class BookingForm extends Component {
         const startDateObj = new Date(newBooking.checkInDate)
         const endDateObj = new Date(newBooking.checkOutDate)
 
-        // TODO: setstate for rooms status
         this.setState({
             data: newBooking,
             startDate: newBooking.checkInDate,
@@ -201,6 +201,8 @@ export class BookingForm extends Component {
 
         this.setState({
             data,
+            startDate: startDateISO,
+            endDate: endDateISO,
             selectionRange: {
                 ...this.state.selectionRange,
                 ...dateRange
@@ -209,15 +211,15 @@ export class BookingForm extends Component {
     }
 
     handleClickRoom = (roomId) => {
-        console.log("click")
-        console.log(roomId, " ", getRoomStatusByDate(roomId, this.state.startDate, this.state.endDate))
 
         if (getRoomStatusByDate(roomId, this.state.startDate, this.state.endDate) === "Reserved") {
-            console.log("update")
             updateRoomStatus(this.state.data, roomId)
         } else {
             saveRoomBooking(this.state.data, roomId, "Reserved")
         }
+        this.setState({
+            condition: !this.state.condition
+        })
 
     }
 
@@ -264,7 +266,8 @@ export class BookingForm extends Component {
                             rooms={this.state.rooms}
                             dateSelectStart={this.state.startDate}
                             dateSelectEnd={this.state.endDate}
-                            handleClickRoom={this.handleClickRoom}/>
+                            handleClickRoom={this.handleClickRoom}
+                            condition={this.condition}/>
                         <SelectInput
                             name="bookingStatusId"
                             label="Booking Status"
