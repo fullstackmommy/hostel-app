@@ -1,11 +1,14 @@
 import React, {Component} from 'react'
 import Input from '../common/Input/Input'
-import DateInput from '../common/DateInput/DateInput'
 import SelectInput from '../common/SelectInput/SelectInput'
 import {getBookings, saveBooking} from '../../services/bookingService'
 import {getBookingStats} from '../../services/bookingStatsService'
 import Joi from 'joi-browser'
 import {Card, CardBody, CardHeader} from 'reactstrap'
+import {addDays, format} from 'date-fns';
+import 'react-date-range/dist/styles.css'
+import 'react-date-range/dist/theme/default.css'
+import {DateRangePicker} from 'react-date-range';
 import RoomBookingList from '../RoomBookingList/RoomBookingList'
 import {getRooms} from '../../services/roomService'
 
@@ -32,6 +35,13 @@ export class BookingForm extends Component {
             checkOutDate: "",
             numPax: "",
             bookingStatusId: ""
+        },
+        selectionRange: {
+            selection: {
+                startDate: new Date(),
+                endDate: addDays(new Date(), 7),
+                key: 'selection'
+            }
         }
     }
 
@@ -118,9 +128,11 @@ export class BookingForm extends Component {
             .props
             .history
             .replace('/bookings');
+
     }
 
     handleChange = ({currentTarget: input}) => {
+
         const copyError = {
             ...this.state.error
         }
@@ -142,36 +154,6 @@ export class BookingForm extends Component {
         this.setState({data});
     };
 
-    handleChangeDate = ({currentTarget: input}) => {
-        const copyError = {
-            ...this.state.error
-        }
-
-        const isInvalid = this.validateField(input.name, input.value)
-
-        if (isInvalid) {
-            copyError[input.name] = isInvalid.details[0].message
-            this.setState({error: copyError})
-        } else {
-            copyError[input.name] = ""
-            this.setState({error: copyError})
-        }
-
-        const data = {
-            ...this.state.data
-        };
-
-        const valueDateObj = new Date(input.value)
-        const valueDateISO = valueDateObj.toISOString()
-
-        data[input.name] = valueDateISO;
-        if (input.name === "checkInDate") {
-            this.setState({data, startDate: valueDateISO})
-        } else {
-            this.setState({data, endDate: valueDateISO})
-        }
-    };
-
     handleCancel = (event) => {
         event.preventDefault()
         this
@@ -180,21 +162,37 @@ export class BookingForm extends Component {
             .replace('/bookings');
     }
 
+    handleSelectDate = (dateRange) => {
+
+        const startDateISO = format(dateRange.selection.startDate, 'YYYY-MM-DDTHH:mm:ss.SSSZ')
+        const endDateISO = format(dateRange.selection.endDate, 'YYYY-MM-DDTHH:mm:ss.SSSZ')
+
+        const data = {
+            ...this.state.data
+        };
+
+        data["checkInDate"] = startDateISO
+        data["checkOutDate"] = endDateISO
+
+        this.setState({
+            data,
+            startDate: startDateISO,
+            endDate: endDateISO,
+            selectionRange: {
+                ...this.state.selectionRange,
+                ...dateRange
+            }
+        })
+    }
+
     handleClickRoom = () => {
         console.log("click ")
     }
 
     render() {
 
-        const {bookingStats, error} = this.state
-        const {
-            name,
-            contactName,
-            numPax,
-            bookingStatusId,
-            checkInDate,
-            checkOutDate
-        } = this.state.data
+        const {bookingStats, error, selectionRange} = this.state
+        const {name, contactName, numPax, bookingStatusId} = this.state.data
 
         return (
             <Card>
@@ -217,23 +215,6 @@ export class BookingForm extends Component {
                             onChange={this.handleChange}
                             value={contactName}
                             error={error.contactName}/>
-                        <span
-                            style={{
-                            display: 'inline-block'
-                        }}>
-                            <DateInput
-                                name="checkInDate"
-                                label="Check In Date"
-                                onChange={this.handleChangeDate}
-                                value={checkInDate.substring(0, 10)}
-                                error={error.checkInDate}/>
-                            <DateInput
-                                name="checkOutDate"
-                                label="Check Out Date"
-                                onChange={this.handleChangeDate}
-                                value={checkOutDate.substring(0, 10)}
-                                error={error.checkOutDate}/>
-                        </span>
                         <Input
                             name="numPax"
                             label="Num of Pax"
@@ -241,6 +222,12 @@ export class BookingForm extends Component {
                             onChange={this.handleChange}
                             value={numPax}
                             error={error.numPax}/>
+                        <DateRangePicker
+                            showSelectionPreview={true}
+                            moveRangeOnFirstSelection={false}
+                            months={1}
+                            ranges={[selectionRange.selection]}
+                            onChange={this.handleSelectDate}/>
                         <RoomBookingList
                             rooms={this.state.rooms}
                             dateSelectStart={this.state.startDate}

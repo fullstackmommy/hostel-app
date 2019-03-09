@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import BookingCalendar from '../../components/BookingCalendar/BookingCalendar'
+import './Dashboard.css';
 
 class Dashboard extends Component {
 
@@ -8,7 +10,7 @@ class Dashboard extends Component {
 
     return (
       <div className="animated fadeIn">
-        Dashboard
+        <BookingCalendar/>
       </div>
     );
   }
