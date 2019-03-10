@@ -88,7 +88,7 @@ export class BookingView extends Component {
                                 Check In Date
                             </th>
                             <td>
-                                {checkInDate}
+                                {new Date(checkInDate).toDateString()}
                             </td>
                         </tr>
                         <tr>
@@ -96,7 +96,7 @@ export class BookingView extends Component {
                                 Check Out Date
                             </th>
                             <td>
-                                {checkOutDate}
+                                {new Date(checkOutDate).toDateString()}
                             </td>
                         </tr>
                         <tr>
