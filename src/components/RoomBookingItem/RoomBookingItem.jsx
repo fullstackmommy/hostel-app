@@ -18,10 +18,11 @@ export class RoomBookingItem extends Component {
     }
 
     render() {
-        const {room, handleClickRoom, dateSelectStart, dateSelectEnd} = this.props
+        const {room, handleClickRoom, dateSelectStart, dateSelectEnd, disabled} = this.props
         return (
             <button
                 type="button"
+                disabled={disabled}
                 onClick={() => handleClickRoom(room)}
                 className={this.getClass(getRoomStatusByDate(room, dateSelectStart, dateSelectEnd).substr(0, 1))}
                 key={room}

@@ -12,7 +12,14 @@ export class RoomBookingList extends Component {
     }
 
     render() {
-        const {rooms, dateSelectStart, dateSelectEnd, handleClickRoom, condition} = this.props
+        const {
+            rooms,
+            dateSelectStart,
+            dateSelectEnd,
+            handleClickRoom,
+            condition,
+            disabled
+        } = this.props
         const roomsLevel3 = rooms.filter(room => (room.substring(0, 2) === "03"))
         const roomsLevel4 = rooms.filter(room => (room.substring(0, 2) === "04"))
 
@@ -24,6 +31,7 @@ export class RoomBookingList extends Component {
                     {roomsLevel3.map(room => <RoomBookingItem
                         room={room}
                         key={room}
+                        disabled={disabled}
                         handleClickRoom={handleClickRoom}
                         dateSelectStart={dateSelectStart}
                         dateSelectEnd={dateSelectEnd}
@@ -33,6 +41,7 @@ export class RoomBookingList extends Component {
                     {roomsLevel4.map(room => <RoomBookingItem
                         room={room}
                         key={room}
+                        disabled={disabled}
                         handleClickRoom={handleClickRoom}
                         dateSelectStart={dateSelectStart}
                         dateSelectEnd={dateSelectEnd}

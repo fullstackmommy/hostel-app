@@ -49,7 +49,8 @@ export class BookingForm extends Component {
                 key: 'selection'
             }
         },
-        condition: false
+        condition: false,
+        isRoomSelectDisabled: false
     }
 
     schema = {
@@ -113,6 +114,10 @@ export class BookingForm extends Component {
         const startDateObj = new Date(newBooking.checkInDate)
         const endDateObj = new Date(newBooking.checkOutDate)
 
+        let isButtonDisabled = false
+        if (newBooking.bookingStatusId === "CL" || newBooking.bookingStatusId === "CA") 
+            isButtonDisabled = true
+
         this.setState({
             data: newBooking,
             startDate: newBooking.checkInDate,
@@ -123,7 +128,8 @@ export class BookingForm extends Component {
                     endDate: endDateObj,
                     key: 'selection'
                 }
-            }
+            },
+            isRoomSelectDisabled: isButtonDisabled
         })
     }
 
@@ -211,7 +217,7 @@ export class BookingForm extends Component {
     }
 
     handleClickRoom = (roomId) => {
-
+        console.log("room ", roomId, " condition ", this.state.condition)
         if (getRoomStatusByDate(roomId, this.state.startDate, this.state.endDate) === "Reserved") {
             updateRoomStatus(this.state.data, roomId)
         } else {
@@ -225,7 +231,7 @@ export class BookingForm extends Component {
 
     render() {
 
-        const {bookingStats, error, selectionRange} = this.state
+        const {bookingStats, error, selectionRange, isRoomSelectDisabled} = this.state
         const {name, contactName, numPax, bookingStatusId} = this.state.data
 
         return (
@@ -263,6 +269,7 @@ export class BookingForm extends Component {
                             ranges={[selectionRange.selection]}
                             onChange={this.handleSelectDate}/>
                         <RoomBookingList
+                            disabled={isRoomSelectDisabled}
                             rooms={this.state.rooms}
                             dateSelectStart={this.state.startDate}
                             dateSelectEnd={this.state.endDate}
