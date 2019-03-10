@@ -4,7 +4,7 @@ import {getRoomStatusByDate} from '../../services/roomBookingService'
 export class RoomBookingItem extends Component {
 
     getClass = (select) => {
-        if (this.props.condition) {
+        if (!this.props.condition) {
             if (select === "A") 
                 return "btn btn-success mr-1"
             else 
