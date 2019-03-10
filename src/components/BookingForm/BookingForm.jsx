@@ -31,6 +31,8 @@ export class BookingForm extends Component {
         data: {
             name: "",
             contactName: "",
+            contactNum: "",
+            contactEmail: "",
             checkInDate: "",
             checkOutDate: "",
             numPax: "",
@@ -39,6 +41,8 @@ export class BookingForm extends Component {
         error: {
             name: "",
             contactName: "",
+            contactNum: "",
+            contactEmail: "",
             numPax: "",
             bookingStatusId: ""
         },
@@ -59,6 +63,12 @@ export class BookingForm extends Component {
             .string()
             .required(),
         contactName: Joi
+            .string()
+            .required(),
+        contactNum: Joi
+            .string()
+            .required(),
+        contactEmail: Joi
             .string()
             .required(),
         checkInDate: Joi.string(),
@@ -232,7 +242,14 @@ export class BookingForm extends Component {
     render() {
 
         const {bookingStats, error, selectionRange, isRoomSelectDisabled} = this.state
-        const {name, contactName, numPax, bookingStatusId} = this.state.data
+        const {
+            name,
+            contactName,
+            contactNum,
+            contactEmail,
+            numPax,
+            bookingStatusId
+        } = this.state.data
 
         return (
             <Card>
@@ -255,6 +272,18 @@ export class BookingForm extends Component {
                             onChange={this.handleChange}
                             value={contactName}
                             error={error.contactName}/>
+                        <Input
+                            name="contactNum"
+                            label="Contact No"
+                            onChange={this.handleChange}
+                            value={contactNum}
+                            error={error.contactNum}/>
+                        <Input
+                            name="contactEmail"
+                            label="Email Address"
+                            onChange={this.handleChange}
+                            value={contactEmail}
+                            error={error.contactEmail}/>
                         <Input
                             name="numPax"
                             label="Num of Pax"
