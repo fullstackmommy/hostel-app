@@ -7,12 +7,13 @@ export class BookingView extends Component {
         data: {
             name: "",
             contactName: "",
+            contactNum: "",
+            contactEmail: "",
             checkInDate: "",
             checkOutDate: "",
             numPax: "",
             numRoom: "",
             bookingStatusId: "",
-            contactNum: "",
             bookedOn: "",
             priceID: ""
         }
@@ -36,12 +37,13 @@ export class BookingView extends Component {
         const {
             name,
             contactName,
+            contactNum,
+            contactEmail,
             checkInDate,
             checkOutDate,
             numPax,
             numRoom,
             bookingStatusId,
-            contactNum,
             bookedOn,
             priceId
         } = this.state.data
@@ -71,6 +73,14 @@ export class BookingView extends Component {
                             </th>
                             <td>
                                 {contactNum}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                Contact Email
+                            </th>
+                            <td>
+                                {contactEmail}
                             </td>
                         </tr>
                         <tr>

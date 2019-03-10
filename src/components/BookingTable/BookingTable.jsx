@@ -17,6 +17,8 @@ function BookingTable({bookings, handleDelete}) {
                 <tr>
                     <th>Name</th>
                     <th>Contact Name</th>
+                    <th>Contact No</th>
+                    <th>Email Address</th>
                     <th>Check In Date</th>
                     <th>Check Out Date</th>
                     <th>Number of Pax</th>
@@ -29,6 +31,8 @@ function BookingTable({bookings, handleDelete}) {
                     <tr key={booking._id} data-testid="booking-table-row">
                         <td>{booking.name}</td>
                         <td>{booking.contactName}</td>
+                        <td>{booking.contactNum}</td>
+                        <td>{booking.contactEmail}</td>
                         <td>{booking
                                 .checkInDate
                                 .substring(0, 10)}</td>
