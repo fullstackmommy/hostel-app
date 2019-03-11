@@ -42,6 +42,9 @@ react-testing-library
 joi-browser
 moment
 react-dates
+date-fns
+react-date-range
+react-big-calendar
 
 ### Prerequisites
 
