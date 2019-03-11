@@ -104,7 +104,7 @@ let bookings = [
         contactNum: "91230989",
         contactEmail: "tiffling@gmail.com",
         checkInDate: "2019-03-02T12:00:00Z",
-        checkOutDate: "2019-03-03T17:00:00Z",
+        checkOutDate: "2019-03-03T12:00:00Z",
         numPax: 68,
         numRoom: 17,
         bookingStatus: {
