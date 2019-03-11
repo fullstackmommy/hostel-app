@@ -227,7 +227,6 @@ export class BookingForm extends Component {
     }
 
     handleClickRoom = (roomId) => {
-        console.log("room ", roomId, " condition ", this.state.condition)
         if (getRoomStatusByDate(roomId, this.state.startDate, this.state.endDate) === "Reserved") {
             updateRoomStatus(this.state.data, roomId)
         } else {
